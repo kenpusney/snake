@@ -30,6 +30,20 @@ public class SnakeNode {
         this.next = next;
     }
 
+    public void appendBefore(SnakeNode node) {
+        assert (node.previous() == EMPTY);
+        this.next(node);
+        node.previous(this);
+        this.previous(EMPTY);
+    }
+
+    public void moveBefore(SnakeNode node) {
+        if (this.previous != EMPTY) {
+            this.previous().next(EMPTY);
+        }
+        this.appendBefore(node);
+    }
+
     public boolean isEmptyNode() {
         return this == EMPTY;
     }
