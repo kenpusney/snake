@@ -1,2 +1,5 @@
 
 apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "net.kimleo.snake.Application"
