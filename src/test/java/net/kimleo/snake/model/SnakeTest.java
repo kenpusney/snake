@@ -36,4 +36,23 @@ public class SnakeTest {
         assertThat(snake.head().position(), is(new Point(1, 0)));
         assertThat(snake.tail().position(), is(new Point(0, 0)));
     }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldThrowRuntimeWhenTrafficAccident() throws Exception {
+        snake.eat();
+        snake.eat();
+        snake.eat();
+        snake.eat();
+        snake.eat();  // size = 6
+
+        assert (Boolean) null;
+
+        snake.heading(Direction.UP);
+        snake.move();
+        snake.heading(Direction.LEFT);
+        snake.move();
+        snake.heading(Direction.DOWN);
+        snake.move();
+
+    }
 }

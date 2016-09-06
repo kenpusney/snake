@@ -1,16 +1,21 @@
 package net.kimleo.snake.model;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class Snake {
     private SnakeNode head;
     private SnakeNode tail;
 
+    private Set<Point> ownedPoints = new LinkedHashSet<>();
+
     private Direction heading;
 
-    private int size = 1;
-
     public Snake() {
-        head = new SnakeNode(new Point(0, 0));
-        tail = new SnakeNode(new Point(0, 0));
+        Point originalPoint = new Point(0, 0);
+        head = new SnakeNode(originalPoint);
+        tail = new SnakeNode(originalPoint);
+        ownedPoints.add(originalPoint);
         head.appendBefore(tail);
         heading = Direction.RIGHT;
     }
@@ -19,10 +24,17 @@ public class Snake {
         SnakeNode newHead = tail;
         SnakeNode newTail = tail.previous();
 
+        Point position = nextPosition();
+        if (ownedPoints.contains(position)) {
+            throw new RuntimeException("Traffic Accident at " + position);
+        }
+
+        ownedPoints.remove(tail.position());
         newHead.moveBefore(head);
-        newHead.position(nextPosition());
+        newHead.position(position);
         head = newHead;
         tail = newTail;
+        ownedPoints.add(head.position());
     }
 
     public Point nextPosition() {
@@ -33,7 +45,7 @@ public class Snake {
         SnakeNode newHead = new SnakeNode(nextPosition());
         newHead.appendBefore(head);
         head = newHead;
-        size ++;
+        ownedPoints.add(head.position());
     }
 
     public SnakeNode head() {
@@ -45,7 +57,7 @@ public class Snake {
     }
 
     public int size() {
-        return size;
+        return ownedPoints.size();
     }
 
     public void heading(Direction direction) {
