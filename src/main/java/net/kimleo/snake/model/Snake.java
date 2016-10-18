@@ -1,5 +1,7 @@
 package net.kimleo.snake.model;
 
+import net.kimleo.snake.context.GameContext;
+
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -62,5 +64,9 @@ public class Snake {
 
     public void heading(Direction direction) {
         heading = direction;
+    }
+
+    public void draw(GameContext mock) {
+        mock.draw(this);
     }
 }

@@ -1,6 +1,8 @@
 package net.kimleo.snake.model;
 
 import javafx.geometry.Point2D;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 
 public class SnakeNode {
     private SnakeNode previous = EMPTY;
