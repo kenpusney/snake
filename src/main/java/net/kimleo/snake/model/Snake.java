@@ -66,7 +66,7 @@ public class Snake {
         heading = direction;
     }
 
-    public void draw(GameContext mock) {
-        mock.draw(this);
+    public void draw(GameContext context) {
+        context.draw(this);
     }
 }

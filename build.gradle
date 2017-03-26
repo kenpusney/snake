@@ -2,7 +2,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName = "net.kimleo.snake.Application"
+mainClassName = "net.kimleo.snake.SnakeApplication"
 
 repositories {
     mavenCentral()
@@ -10,6 +10,5 @@ repositories {
 
 dependencies {
     testCompile("junit:junit:4.12")
-    testCompile("org.powermock:powermock-module-junit4:1.6.5")
-    testCompile("org.powermock:powermock-api-mockito:1.6.5")
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
 }

@@ -3,6 +3,7 @@ package net.kimleo.snake.model;
 import javafx.scene.canvas.GraphicsContext;
 import net.kimleo.snake.context.GameContext;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -69,6 +70,7 @@ public class SnakeTest {
     }
 
     @Test
+    @Ignore
     public void shouldDrawSnakeNodeAsExpected() throws Exception {
         GraphicsContext context = mock(GraphicsContext.class);
         GameContext game = new GameContext(854, 480, 32, context);
