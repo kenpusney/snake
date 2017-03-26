@@ -56,13 +56,8 @@ public class SnakeApplication extends Application {
 
         scene.setOnKeyPressed(event -> {
             KeyCode code = event.getCode();
-            switch (code) {
-                case LEFT:
-                case RIGHT:
-                case UP:
-                case DOWN:
-                    snake.heading(actions.get(code));
-                    break;
+            if (actions.containsKey(code)) {
+                snake.heading(actions.get(code));
             }
         });
 
